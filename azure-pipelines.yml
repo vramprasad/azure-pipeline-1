@@ -2,7 +2,9 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: RPLocalPool
+  demands:
+   - agent.name -equals RPLocalMac
 
 stages:
 - stage: Build
