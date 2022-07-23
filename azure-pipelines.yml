@@ -21,21 +21,5 @@ stages:
   jobs: 
   - job: Job1
     steps:
-    - bash: |
-        java --version
-        displayName: 'Print JAVA version'
-  - job: Job2
-    steps:
-    - bash: |
-        echo $(build.buildNumber)
-        displayName: 'Display Build Number'
-  - job: Job3
-    steps:
-    - bash: |
-        mvn -v
-        displayName: 'Print Maven version'
-  - job: Job4
-    steps:
-    - bash: |
-        echo ${{ parameters.image }}
-        displayName: 'Print Parameter'
+    - script: java --version
+    displayName: Print JAVA version
