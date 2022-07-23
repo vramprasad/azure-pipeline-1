@@ -28,9 +28,7 @@ stages:
     steps:
     - script: java --version
     displayName: Print JAVA version
-    steps:
-    - script: mvn -v
-    displayName: Print Maven version
+
 - stage: Test
   jobs: 
   - job: "PrintVariables"
