@@ -12,9 +12,4 @@ stages:
   - job: Job1
     steps:
     - bash: |
-        echo $(buildName)
-        echo $(date +%Y)
-  - job: Job2
-    steps:
-    - bash: |
-        echo $(date +%Y)
+        java --version
