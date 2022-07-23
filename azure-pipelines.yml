@@ -11,4 +11,10 @@ stages:
   jobs: 
   - job: Job1
     steps:
-    - script: echo 'Test Job 1'
+    - bash: |
+        echo $(buildName)
+        echo $(date +%Y)
+  - job: Job2
+    steps:
+    - bash: |
+        echo $(date +%Y)
