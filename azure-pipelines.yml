@@ -8,6 +8,11 @@ parameters:
   - ubuntu-latest
   - macOS-latest
 
+variables:
+- group: varPool
+- name: one
+  value: initialValue 
+
 trigger:
 - main
 
@@ -19,7 +24,19 @@ pool:
 stages:
 - stage: Build
   jobs: 
-  - job: Job1
+  - job: "PrintVersion"
     steps:
     - script: java --version
     displayName: Print JAVA version
+- stage: Test
+  jobs: 
+  - job: "PrintVariables"
+    steps:
+    - script: |
+        echo ${{ variables.one }}
+        echo 'Printing of local variables completed'
+      displayName: Print value of local variables
+    - script: |
+        echo ${{ parameters.image }}
+        echo 'Printing of parameter variables completed'
+      displayName: Print value of Parameter variables
