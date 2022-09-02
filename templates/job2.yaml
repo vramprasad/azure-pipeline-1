@@ -1,3 +1,6 @@
 steps:
 - script: |
     echo 'Inside Test Job --> Job2'
+    echo ${{ parameters.azureServiceConnection }}
+    echo ${{ parameters.pEnvironment }}
+    echo $(rpvg1_var2)
