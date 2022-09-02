@@ -42,7 +42,7 @@ parameters:
       - PROD
 
 variables: 
-    - group: ${{ parameters.GroupVariablesName}}
+    - group: ${{ parameters.pGroupVariablesName}}
 
 stages:
 - stage: Build
