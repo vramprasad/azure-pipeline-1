@@ -1,5 +1,70 @@
 trigger:
-- main
+- none
 
 pool:
-  vmImage: ubuntu-latest
+  name: RPLocalPool
+  demands:
+   - agent.name -equals RPLocalMac
+
+parameters:
+  - name: pGroupVariablesName
+    displayName: "Name of the variable group"
+    type: string
+    default: RPVariableGroup1
+    values:
+      - RPVariableGroup1
+      - RPVariableGroup2
+      - RPVariableGroup3
+
+  - name: pazureServiceConnection
+    displayName: "azure Service Connection"
+    type: string
+    default: service-connection-1
+    values:
+      - service-connection-1
+      - service-connection-2
+      - service-connection-3
+  - name: pnumberOfInstances
+    displayName: "Number of Instances"
+    type: string
+    default: 2
+    values:
+      - 2
+      - 3
+      - 4
+  - name: pEnvironment
+    type: string
+    default: DEV
+    values:
+      - DEV
+      - TEST
+      - ACC
+      - PROD
+
+variables: 
+    - group: ${{ parameters.GroupVariablesName}}
+
+stages:
+- stage: Build
+  displayName: 'Build Job'
+  jobs: 
+  - job: Job1
+    displayName: 'Job 1 inside Build'
+    steps:
+      - template: ./templates/job1.yaml
+        parameters:
+          azureServiceConnection: ${{ parameters.pazureServiceConnection}}
+          numberOfInstances: ${{ parameters.pnumberOfInstances}}
+          
+- stage: Test 
+  displayName: 'Testing Job'
+  jobs:
+    - job: Job2
+      displayName: 'Job2 inside Test'
+      steps:
+        - template: ./templates/job2.yaml
+          parameters:
+            azureServiceConnection: ${{ parameters.pazureServiceConnection}}
+            Environment: ${{ parameters.pEnvironment}}
+                     
+          
