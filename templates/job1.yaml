@@ -4,3 +4,4 @@ steps:
     echo ${{ parameters.azureServiceConnection }}
     echo ${{ parameters.numberOfInstances }}
     echo $(rpvg1_var1)
+    echo $(rpvg1_subnet1)
