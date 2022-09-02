@@ -1,3 +1,5 @@
+trigger: none
+
 parameters:
 - name: image
   displayName: Pool Image
@@ -12,9 +14,6 @@ variables:
 - group: varPool
 - name: one
   value: initialValue 
-
-trigger:
-- main
 
 pool:
   name: RPLocalPool
