@@ -1,3 +1,6 @@
 steps:
 - script: |
     echo 'Inside Build Job --> Job1'
+    echo ${{ parameters.azureServiceConnection }}
+    echo ${{ parameters.numberOfInstances }}
+    echo $(rpvg1_var1)
