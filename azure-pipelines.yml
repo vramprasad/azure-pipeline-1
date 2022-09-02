@@ -32,7 +32,8 @@ parameters:
       - '2'
       - '3'
       - '4'
-  - name: Environment
+  - name: pEnvironment
+    displayName: "Environment"
     type: string
     default: DEV
     values:
