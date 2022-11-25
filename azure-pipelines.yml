@@ -129,3 +129,15 @@ stages:
     steps:
       - script: |
           echo 'Upload Artifact stage --> Inside Component 2 - UA Job'
+- stage: TestTaskfromClassic
+  displayName: 'Test Task from Classic'
+  jobs: 
+  - job: TAJob
+    displayName: 'Classic Task Job'
+    steps:
+      - task: Bash@3
+        inputs:
+         targetType: 'inline'
+         script: |
+           # Write your commands here
+           echo 'From Classic to YAML'
