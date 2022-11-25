@@ -47,24 +47,43 @@ variables:
 
 stages:
 - stage: Build
-  displayName: 'Build Job'
+  displayName: 'Build Stage'
   jobs: 
-  - job: Job1
-    displayName: 'Job 1 inside Build'
+  - job: BuildJob1
+    displayName: 'Component 1 - Build job'
     steps:
-      - template: ./templates/job1.yaml
-        parameters:
-          azureServiceConnection: ${{ parameters.pazureServiceConnection}}
-          numberOfInstances: ${{ parameters.pnumberOfInstances}}
+      - script: |
+          echo 'Build stage --> Inside Component 1 - Build Job'  
+  - job: BuildJob2
+    displayName: 'Component 2 - Build job'
+    steps:
+      - script: |
+          echo 'Build stage --> Inside Component 2 - Build Job'  
           
-- stage: Test 
-  displayName: 'Testing Job'
-  jobs:
-    - job: Job2
-      displayName: 'Job2 inside Test'
-      steps:
-        - template: ./templates/job2.yaml
-          parameters:
-            azureServiceConnection: ${{ parameters.pazureServiceConnection}}
-            Environment: ${{ parameters.pEnvironment}}
+- stage: Test
+  displayName: 'Test Stage'
+  jobs: 
+  - job: StageJob1
+    displayName: 'Component 1 - Test job'
+    steps:
+      - script: |
+          echo 'Test stage --> Inside Component 1 - Test Job'  
+  - job: StageJob1
+    displayName: 'Component 2 - Test job'
+    steps:
+      - script: |
+          echo 'Test stage --> Inside Component 2 - Test Job'  
 
+- stage: CodeCoverage
+  displayName: 'Code Coverage Stage'
+  jobs: 
+  - job: CCJob1
+    displayName: 'Component 1 - Code Coverage job'
+    steps:
+      - script: |
+          echo 'Code Coverage stage --> Inside Component 1 - CC Job'  
+  - job: StageJob1
+    displayName: 'Component 2 - Test job'
+    steps:
+      - script: |
+          echo 'Code Coverage stage --> Inside Component 2 - CC Job'
