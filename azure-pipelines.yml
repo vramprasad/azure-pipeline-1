@@ -87,3 +87,45 @@ stages:
     steps:
       - script: |
           echo 'Code Coverage stage --> Inside Component 2 - CC Job'
+
+- stage: StaticAnalysis
+  displayName: 'Static Analysis Stage'
+  jobs: 
+  - job: CCJob1
+    displayName: 'Component 1 - Static Analysis job'
+    steps:
+      - script: |
+          echo 'Static Analysis stage --> Inside Component 1 - SA Job'  
+  - job: CCJob2
+    displayName: 'Component 2 - Static Analysis job'
+    steps:
+      - script: |
+          echo 'Static Analysis stage --> Inside Component 2 - SA Job'
+
+- stage: CompositionAnalysis
+  displayName: 'Composition Analysis Stage'
+  jobs: 
+  - job: CAJob1
+    displayName: 'Component 1 - Composition Analysis job'
+    steps:
+      - script: |
+          echo 'Composition Analysis stage --> Inside Component 1 - CA Job'  
+  - job: CAJob2
+    displayName: 'Component 2 - Composition Analysis job'
+    steps:
+      - script: |
+          echo 'Composition Analysis stage --> Inside Component 2 - CA Job'
+
+- stage: UploadArtifact
+  displayName: 'Upload Artifact Stage'
+  jobs: 
+  - job: UAJob1
+    displayName: 'Component 1 - Upload Artifact job'
+    steps:
+      - script: |
+          echo 'Upload Artifact stage --> Inside Component 1 - UA Job'  
+  - job: UAJob2
+    displayName: 'Component 2 - Upload Artifact job'
+    steps:
+      - script: |
+          echo 'Upload Artifact stage --> Inside Component 2 - UA Job'
