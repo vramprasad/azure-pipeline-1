@@ -46,7 +46,7 @@ variables:
     - group: ${{ parameters.pGroupVariablesName}}
 
 stages:
-- stage: Build
+- stage: BuildStage
   displayName: 'Build Stage'
   jobs: 
   - job: BuildJob1
@@ -60,15 +60,15 @@ stages:
       - script: |
           echo 'Build stage --> Inside Component 2 - Build Job'  
           
-- stage: Test
+- stage: TestStage
   displayName: 'Test Stage'
   jobs: 
-  - job: StageJob1
+  - job: TestJob1
     displayName: 'Component 1 - Test job'
     steps:
       - script: |
           echo 'Test stage --> Inside Component 1 - Test Job'  
-  - job: StageJob1
+  - job: TestJob2
     displayName: 'Component 2 - Test job'
     steps:
       - script: |
@@ -82,7 +82,7 @@ stages:
     steps:
       - script: |
           echo 'Code Coverage stage --> Inside Component 1 - CC Job'  
-  - job: StageJob1
+  - job: CCJob2
     displayName: 'Component 2 - Test job'
     steps:
       - script: |
